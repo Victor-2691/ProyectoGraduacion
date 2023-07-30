@@ -1,0 +1,126 @@
+.derecha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet {
+        align-items: flex-end;
+        margin-right: 5rem;
+    }
+
+    .dark-mode-boton {
+        width: 2.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+
+        // Filter permite crear efectos invierte el color aplicado
+        filter: invert(100%);
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        @include tablet {
+          
+            margin-right: 2rem;
+            width: 35px;
+            height: 35px;
+        }
+    }
+}
+
+.barra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0rem;
+    }
+
+    .imgloco {
+        width: 80px;
+        height: 80px;
+        @include tablet {
+
+            width: 120px;
+            height: 120px;
+        }
+
+
+    }
+}
+
+.navegacion {
+    // Que no se vea
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    // animacion
+    transition: visibility 0.3s ease-in-out, opacity 0.5s linear, height 0.5s linear;
+
+    @include tablet {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        opacity: 1;
+        visibility: visible;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    a {
+        color: $blanco;
+        text-decoration: none;
+        font-size: 2.2rem;
+        display: block;
+        text-align: center;
+
+        @include tablet {
+            margin-right: 2rem;
+            font-size: 1.8rem;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+
+        &:hover {
+            color: $principal;
+        }
+    }
+}
+
+/** Menu de hamburguesa **/
+.mobile-menu {
+    // Le dice que cuando llegue a un tamano no se vea el elemento
+    // en este caso el menu de hamburguesa
+    @include tablet {
+        display: none;
+        width: 3.5rem;
+    }
+
+    img {
+        width: 2.5rem;
+    }
+}
+
+.mostrar {
+    // Que se vea
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+}
+
+
+.footer{
+    // display: none;
+
+    @include tablet {
+        // display: none;
+      
+    }
+
+}

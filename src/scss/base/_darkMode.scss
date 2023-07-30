@@ -1,0 +1,125 @@
+.dark-mode {
+    background-color: darken($grisOscuro, 10);
+
+    p {
+        color: $blanco;
+    }
+
+    a,
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: $gris;
+    }
+
+    .anuncio,
+    .resumen-propiedad {
+        background-color: $grisOscuro;
+        border: 1px solid $grisOscuro;
+
+        .precio {
+            color: $verde;
+        }
+        .icono {
+            filter: invert(100%);
+        }
+    }
+
+    .texto-nosotros blockquote {
+        color: $blanco;
+    }
+
+    .formulario {
+        label,
+        legend,
+        p {
+            color: $gris;
+        }
+
+        input:not([type="submit"]),
+        textarea,
+        select {
+            background-color: $grisOscuro;
+            border: 1px solid $grisOscuro;
+            color: $blanco;
+        }
+
+        // fieldset {
+        //     // background-color: $gris;
+        //     border: 3px solid $principal;
+        //     -webkit-box-shadow: 10px 10px 5px 0px rgba(163,163,163,1);
+        //     -moz-box-shadow: 10px 10px 5px 0px rgba(163,163,163,1);
+        //     box-shadow: 10px 10px 5px 0px rgba(163,163,163,1);
+        //   }
+    }
+
+    .s123_cuadro {
+        border: $principal 2px solid;
+        width: 8rem;
+        height: 8rem;
+        display: inline-block;
+    }
+
+    .perfil {
+        background-color: darken($grisalternativo, 10);
+        h1,
+        h2 {
+            color: $principal;
+        }
+    }
+
+    .boton-negro {
+        @include boton($principal, inline-block);
+        text-transform: uppercase;
+
+        &:hover {
+            color: $negro;
+        }
+
+        border-radius: 1rem;
+    }
+
+    .ih-item.circle.effect2 .info h3 {
+        color: $principal;
+        font-weight: $bold;
+    }
+
+    .iconos {
+        filter: invert(100%);
+    }
+
+    #margin0 {
+        color: $principal;
+    }
+
+    // .perfil_descripcion{
+    //     h1{
+    //         color: $blanco;
+    //     }
+    // }
+
+    // .perfil_preferencias{
+    //     h1{
+    //         color: $blanco;
+    //     }
+    // }
+
+    #h1_sobremi {
+        color: $blanco;
+    }
+
+    // .quemegusta{
+    //     color: $blanco;
+    // }
+
+    .contenedor_grid {
+        h1 {
+            color: $blanco;
+        }
+    }
+
+    .secciones{
+        background-color: darken($grisalternativo, 10);
+    }
+}

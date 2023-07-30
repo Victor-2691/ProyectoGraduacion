@@ -1,0 +1,186 @@
+// reset
+// *{
+//     padding: 0;
+//     margin: 0;
+//     box-sizing: border-box;
+// }
+
+// //Main Styling
+// body,
+// html{
+//     font-family: $principal;
+// }
+
+// h2{
+//     font-size: 2rem;
+//     text-transform: uppercase;
+// }
+
+// h3{
+//     font-size: 1.5rem;
+// }
+
+// h1,
+// h3{
+//     font-weight: 600;
+// }
+
+// h1,
+// h2,
+// h3,
+// p{
+//     margin-bottom: 1rem;
+// }
+
+// a,
+// a:visited{
+//     text-decoration: none;
+//     color: $blanco;
+// }
+
+//Utility Classes
+.container{
+    margin: auto;
+    max-width: 1300px;
+    overflow: auto;
+    padding: 0 10px;
+}
+
+.btn{
+    display: inline-block;
+    font-size: 18px;
+    color: $blanco;
+    background: $principal;
+    padding: 13px 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background: lighten($principal, 10%);
+}
+
+.large{
+    font-size: 1.5rem;
+}
+
+.small{
+    font-size: 1rem;
+}
+
+.txt-primary{
+    color: $principal;
+}
+
+.txt-gray{
+    color: $grisOscuro
+}
+
+.p-80{
+    padding: 80px;
+}
+
+.bk{
+    background: url('../img/login6.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+//Cine
+
+#cine{
+    .cine-wrap{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        //el & significa cine-wrap
+        &-bk{
+            background: url('../img/login6.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            height: 100%;
+        }
+        &-form{
+            padding: 50px;
+            background-color: $blanco;
+            color: $grisOscuro;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            h2,
+            h3,
+            p{
+                text-align: center;
+            }
+            h2{
+                padding-bottom: 20px;
+            }
+            form{
+                p{
+                    text-align: right;
+                }
+                button{
+                    width: 100%;
+                    border-radius: 5px;
+                }
+            }//end form
+        }//end &-form
+    }//end .cine-wrap
+}//end  #cine
+
+
+//FORM STYLE
+%form{
+    padding: 30px;
+    label{
+        display: block;
+        margin-bottom: 5px;
+    }
+    input{
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+}
+
+.form-ln-gray{
+    @extend %form;
+    input{
+        border: 0;
+        border-bottom: 2px solid $grisOscuro;
+    }
+}
+
+
+//MOBILE
+@media only screen and (max-width: 768px) {
+    //Utility classes
+    .bk{
+        height: 100%;
+    }
+
+
+    //Cine
+    #cine{
+        .cine-wrap{
+            grid-template-columns: 1fr;
+            &-bk{
+                display: none;
+            }
+            &-form{
+                padding: 0px;
+            }
+            h2{
+                font-size: 1.5rem
+            }
+        }//end .cine-wrap
+    }//end #cine
+
+    %form{
+        padding: 20px;
+    }
+    
+}//END MOBILE

@@ -1,0 +1,40 @@
+.seccion {
+    margin-top: calc($separacion / 2) 0;
+    margin-bottom: calc($separacion / 2) 0;
+}
+.contenido-centrado {
+    max-width: 80rem;
+}
+
+.alinear-derecha {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.iconos{
+    width: 30px;
+    height: 30px;
+}
+
+.iconos35f{
+    width: 35px;
+    height: 35px;
+    filter: invert(100%);
+
+}
+
+.iconos30{
+    width: 30px;
+    height: 30px;
+}
+
+.iconos25black{
+    width: 25px;
+    height: 25px;
+}
+
+.iconos25{
+    width: 25px;
+    height: 25px;
+    filter: invert(55%);
+}

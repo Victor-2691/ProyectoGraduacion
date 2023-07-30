@@ -1,0 +1,208 @@
+.contenedorform {
+  width: 95%;
+  max-width: 120rem;
+  margin: 0 auto;
+
+  @include tablet {
+    width: 80%;
+  }
+  h1 {
+    font-family: $fuente_cursiva;
+    color: $principal;
+    font-weight: bold;
+    margin: 1rem 0 0 0;
+  }
+}
+
+.formulario {
+  p {
+    font-size: 1.8rem;
+    color: $grisOscuro;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    margin-top: 0;
+  }
+
+  legend {
+    font-size: 2rem;
+    color: $grisOscuro;
+    text-align: center;
+    font-weight: $black;
+    margin-bottom: 2rem;
+           text-align: center;
+    @include tablet{
+      margin-top: 2rem ;
+    }
+  }
+
+  label {
+    font-weight: $bold;
+    text-transform: uppercase;
+    display: block;
+  }
+  input:not([type="submit"]),
+  textarea,
+  select {
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    background-color: $blanco;
+   border: 1px solid $negro;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    accent-color: $principal;
+  }
+
+  textarea {
+    height: 10rem;
+    resize: none;
+    
+  }
+
+  .forma-contacto {
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: first baseline;
+     gap: 0.5rem;
+
+    .label_opciones{
+      font-weight: 500;
+    }
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+
+    }
+
+
+  }
+
+  input[type="radio"] {
+    margin: 0;
+    width: auto;
+    accent-color: $principal;
+  }
+
+  fieldset {
+    // background-color: $gris;
+    border: 3px solid $principal;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    margin-top: 1rem;
+  }
+
+  select[multiple] {
+    height: 1.5em;
+    vertical-align: top;
+    padding: 2rem;
+  }
+  select[multiple]:focus,
+  select[multiple]:active {
+    height: auto;
+  }
+  margin-bottom: 4rem;
+
+}
+
+#Masculino,
+#Femenino,
+#nobinario {
+  margin: 0;
+  width: auto;
+  accent-color: $principal;
+  font-weight:$regular;
+}
+
+
+
+#lable_encontrar{
+ margin-top: 2rem;
+}
+
+.formulario_enviar{
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  @include tablet {
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    
+  }
+
+}
+
+@include tablet{
+  .contiene{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.toggle {
+  position: relative;
+  display: inline;
+
+  input[type="checkbox"] {
+    position: relative;
+    width: 100px;
+    height: 35px;
+    background: #bdc3c7;
+    -webkit-appearance: none;
+    border-radius: 20px;
+    outline: none;
+    transition: 0.4s;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    padding-top: 0;
+  }
+
+  input:checked[type="checkbox"] {
+    background: $principal;
+  }
+
+  input[type="checkbox"]::before {
+    z-index: 2;
+    position: absolute;
+    content: "";
+    left: 0;
+    width: 40px;
+    height: 35px;
+    background: $gris;
+    border-radius: 50%;
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.4s;
+  }
+
+  input:checked[type="checkbox"]::before {
+    left: 60px;
+  }
+
+  label {
+    position: absolute;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    pointer-events: none;
+  }
+
+  .onbtn {
+    bottom: 15px;
+    left: 15px;
+  }
+
+  .ofbtn {
+    bottom: 15px;
+    right: 5px;
+    color: #34495e;
+  }
+}

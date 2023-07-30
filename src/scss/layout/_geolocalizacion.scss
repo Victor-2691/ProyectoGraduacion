@@ -1,0 +1,74 @@
+
+.contenedor_geoloca{
+    max-width: 120rem;
+    width: 95%;
+    margin: 0 auto;
+    height: calc(100vh - 60px - 45px);
+    @include tablet{
+        width: 80%;
+        height: 100%;
+
+        .estilos_btn{
+            margin-bottom: 3rem;
+        }
+      }
+
+}
+
+.contenido_geoloca{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+h1{
+    font-size: 2.5rem;
+    color: $principal;  
+    font-weight: 500; 
+    margin-bottom: 10px;
+    @include tablet{
+
+        font-size: 3rem;
+    }
+}
+
+p{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    @include tablet{
+
+        font-size: 2rem;
+    }
+    
+}
+
+}
+
+#map { 
+
+    height:180px;
+   border-radius: 10px;
+   margin-bottom: 4rem;
+   @include tablet{
+    height:300px;
+   }
+
+}
+
+.centrar_btn_geo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 7rem;
+}
+
+.letraspopup{
+    text-align: center;
+
+    b{
+        color: $principal;
+        font-weight: 700;
+        font-size: 11px;
+    }
+
+}

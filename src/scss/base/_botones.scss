@@ -1,0 +1,20 @@
+.boton-negro {
+    @include boton($negro, inline-block);
+    text-transform: uppercase;
+
+    &:hover {
+        color: $principal;
+         
+    }
+
+    border-radius: 1rem;
+}
+
+// .boton-amarillo-block {
+//     @include boton($amarillo, block);
+// }
+
+.boton-principal {
+    @include boton($principal, inline-block);
+ 
+}

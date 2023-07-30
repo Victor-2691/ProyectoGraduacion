@@ -1,0 +1,84 @@
+.header {
+    background-color: $negro;
+    .barra {
+        a {
+            font-weight: $bold;
+        }
+    }
+
+    &.inicio {
+        background-position: center center;
+        background-size: cover;
+
+        @include tablet {
+            min-height: 70rem;
+        }
+
+        .contenido-header {
+            @include tablet {
+                min-height: 70rem;
+            }
+        }
+    }
+}
+
+.contenido-header {
+    h1 {
+        text-align: left;
+        color: $blanco;
+        font-weight: $bold;
+        line-height: 2;
+        max-width: 60rem;
+    }
+
+    #nombre_usuario{
+        color: $blanco;
+    }
+}
+
+.header_interno {
+    display: none;
+    @include tablet {
+        display: inline;
+    }
+}
+
+.header_movil {
+    display: block;
+    // margin-bottom: 1rem;
+    .btntema {
+       
+        height: 20px;
+        // Filter permite crear efectos invierte el color aplicado
+        filter: invert(100%);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    img {
+        height: 60px;
+       
+    }
+
+    @include tablet {
+        display: none;
+    }
+}
+
+.logo_movil{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.menu-fixed {
+    position: fixed;
+    // Para que se ponga encima de todos los elementos
+    z-index: 1000;
+    top: 0;
+    width: 100%;
+    max-width: 1000px;
+    box-shadow: 0px 4px 3px rgba(0, 0, 0.5);
+}
