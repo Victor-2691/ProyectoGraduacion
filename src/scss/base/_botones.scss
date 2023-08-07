@@ -16,5 +16,13 @@
 
 .boton-principal {
     @include boton($principal, inline-block);
- 
+}
+
+
+.boton-verde {
+    @include boton($verde, block);
+}
+
+.boton-rojo {
+    @include boton($rojo, block);
 }

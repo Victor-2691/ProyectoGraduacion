@@ -109,9 +109,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             '$apellido2',
             '$id',
             '$fecha_actual_completa',
-            1,
+            2,
             '$correo',
-            1,
+            0,
             '$passwordHash' )";
 
 
@@ -120,20 +120,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cuerpocorre = 'Bienvenido al sistema MR Automotriz, su usario esta pendiente de aprobacion por parte del administrador';
             $apellidos = $apellido1 . ' ' . $apellido2;
             $enviarcorreousuario = enviarcorreoUsuarios($correo, $cuerpocorre, $nombre, $apellidos);
-            if ($enviarcorreousuario) {
-                echo "<script>alert('correo de usuario enviado con exito'); </script>";
-            }
-            else{
-                echo "<script>alert('error correo de usaurio'); </script>";
-            }
+          
             // Correo al administrador
             $enviarocorreoadmin = enviarcorreoAdministrador('victor.salgado.martinez@cuc.cr',$nombre,$apellidos,$fecha_actual_completa,$id,'Mecanico');
-            if ($enviarocorreoadmin) {
-                echo "<script>alert('correo de admin enviado con exito'); </script>";
-            }
-            else{
-                echo "<script>alert('error correo de admin'); </script>";
-            }
+         
             echo "<script>alert('El usuario se registro con exito, pendiente aprobación'); </script>";
             echo "<script>window.location = 'index.php' </script>";
             //   header('location: index.php');

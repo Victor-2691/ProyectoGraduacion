@@ -1,9 +1,10 @@
 <?php
 
 
-
 require 'includes/config/database.php';
 $db = conectarBD();
+
+
 $Usario = "";
 $errores = [];
 $fecha_actual = getdate();
@@ -54,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $_SESSION['usuario'] = $Usario['correo_electronico'];
                         $_SESSION['id'] = $Usario['identificacion'];
                         $_SESSION['rol'] = $Usario['id_rol'];
+                        $_SESSION['Nombre'] = $Usario['Nombre'];
                         $_SESSION['login'] = true;
                         // echo "<pre>";
                         // var_dump($_SESSION);
@@ -68,6 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $_SESSION['usuario'] = $Usario['correo_electronico'];
                         $_SESSION['id'] = $Usario['identificacion'];
                         $_SESSION['rol'] = $Usario['id_rol'];
+                        $_SESSION['Nombre'] = $Usario['Nombre'];
                         $_SESSION['login'] = true;
                         // echo "<pre>";
                         // var_dump($_SESSION);

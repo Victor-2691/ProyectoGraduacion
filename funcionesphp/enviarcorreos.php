@@ -108,14 +108,10 @@ function enviarcorreoAdministrador($correodestinario, $nombre, $apellido, $fecha
     <h2> Se registro un usuario usuario </h2>
    
    <p> Nombre: ' . $nombre . ' '.$apellido.'</p>
-   <br>
    <p> Identificación: ' . $cedula . ' </p>
-  <br>
    <p> Perfil: ' . $rol . '</p>
-    <br>
    <p>  Fecha de registro: ' . $fecha . '</p>
-    Por favor aprobar el registro
- 
+   Por favor aprobar el registro
     <img src="cid:logo" alt="Logotipo">
     ';
         $mail->AddEmbeddedImage('build/img/logomr.png', 'logo');

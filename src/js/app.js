@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // desactivarenlaces();
   // animacion();
   // darkmode2();
-  // tabs();
+  tabs();
 
 
 

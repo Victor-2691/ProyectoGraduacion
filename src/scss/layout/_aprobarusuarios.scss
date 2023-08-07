@@ -1,0 +1,39 @@
+.contenedor_usuarios_aprobar{
+
+    max-width: 120rem;
+    width: 85%;
+    margin: 0 auto;
+
+}
+
+.table_aprobar_usuarios{
+
+margin-top: 4rem;
+width: 100%;
+border-spacing: 0;
+
+thead{
+    background-color: $grisOscuro;
+    th{
+        color: $blanco;
+        padding: 2rem;
+    }
+}
+
+
+tr{
+    text-align: center;
+
+}
+
+td{
+    border-bottom: 1px solid black;
+}
+
+td.hiden{
+    display: none;
+}
+
+
+
+}
