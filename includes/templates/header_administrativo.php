@@ -3,10 +3,18 @@
 
 session_start();
 $autenticado = $_SESSION['login'];
+$Usario= $_SESSION['rol']; 
 
-if (!$autenticado) {
+
+if (!$autenticado || $Usario <> 1) {
     header('location: index.php');
 }
+
+// if(){
+//     header('location: index.php');
+// }
+
+
 
 // Es un arreglo de sesion
  $NombreUsuario = $_SESSION['Nombre'];

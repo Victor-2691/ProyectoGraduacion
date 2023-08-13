@@ -1,0 +1,68 @@
+.contenedor_principal_clientes{
+    width: 90%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.formulario2 {
+    p {
+      font-size: 1.8rem;
+      color: $grisOscuro;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+      margin-top: 0;
+    }
+  
+    legend {
+      font-size: 2rem;
+      color: $grisOscuro;
+      text-align: center;
+      font-weight: $black;
+      margin-bottom: 2rem;
+             text-align: center;
+      @include tablet{
+        margin-top: 2rem ;
+      }
+    }
+
+    label {
+        font-weight: $bold;
+        // text-transform: uppercase;
+        // display: block;
+        margin-right: 2rem;
+      }
+
+      fieldset {
+        // background-color: $gris;
+        border: 3px solid $principal;
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        justify-content: center;
+      }
+      
+  input[type="radio"] {
+    margin: 0;
+    width: auto;
+    accent-color: $principal;
+  }
+
+  input:not([type="submit"]),
+  textarea,
+  select {
+    padding: 0.5rem;
+    background-color: $blanco;
+   border: 1px solid $negro;
+    border-radius: 1rem;
+    accent-color: $principal;
+  }
+
+  .radio-container{
+    margin-right: 20px;
+}
+
+}  

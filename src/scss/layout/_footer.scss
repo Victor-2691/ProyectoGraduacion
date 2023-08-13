@@ -16,12 +16,12 @@
     display: none;
     @include tablet {
         display: inline;
-        margin-top: 2rem;
+        // margin-top: 2rem;
         display: flex;
         justify-content: center;
         gap: 2.5rem;
         align-items: center;
-        margin-top: 2rem;
+        // margin-top: 2rem;
         padding: 1rem;
         .copyright {
             color: $blanco;
@@ -58,7 +58,7 @@
 
 
 .contenedor-footer_externo{
-        margin-top: 2rem;
+        // margin-top: 2rem;
         display: flex;
         justify-content: center;
         gap: 2.5rem;

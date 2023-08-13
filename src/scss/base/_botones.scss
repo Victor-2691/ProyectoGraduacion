@@ -15,7 +15,7 @@
 // }
 
 .boton-principal {
-    @include boton($principal, inline-block);
+    @include boton($grisalternativo, inline-block);
 }
 
 

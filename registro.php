@@ -219,5 +219,5 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css
 
     <!-- Se arma como un rompecabezas el fin del HTML esta en el footer -->
     <?php
-    incluirTempleate('footer_externo');
+    incluirTempleate('footer');
     ?>
