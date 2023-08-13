@@ -10,40 +10,13 @@ require '../includes/config/database.php';
 
 $db = conectarBD();
 
-
-//este es un array
-// $array_pago_contador = $_post["mi_dato_1"];
-
-//este es una variable normal
-// $codigoCrud = $_post["codigoCrud"];
-
-// echo "<pre>";
-// var_dump($codigoCrud);
-// echo "<pre>";
-// $_post = json_decode(file_get_contents('php://input'),true);
-
-// //este es un array
-// $array_pago_contador = $_post["mi_dato_1"];
-
-// //este es una variable normal
-// $estado_envio_contador = $_post["mi_dato_2"];
-
-// echo "<pre>";
-// var_dump($estado_envio_contador);
-// echo "<pre>";
-
-// // 1 consulta
+// // 1 consulta todos los clientes
 // // 2 insert
 // // 3 modificar
-
-// $_post = json_decode(file_get_contents('php://input'),true);
-// // echo "<pre>";
-// // var_dump($datos);
-// // echo "<pre>";
-
-// $array_pago_contador = $_post["data2"];
+//  4 consulta provincias
 
 $codigoCrud = $_POST['codigoCrud'] ?? null;
+$codigoProvincia = $_POST['codigoProvincia'] ?? null;
 
 if ($codigoCrud == 1) {
     $consulta = "SELECT Clientes.nombre, Clientes.Primer_Apeliido, Clientes.segundo_apellid,
@@ -59,6 +32,24 @@ if ($codigoCrud == 1) {
 
     //  Covierte un arreglo a Json
     // Para indicar el formato de conversion en este caso para leer aceptos
+    $json = json_encode($arreglo, JSON_UNESCAPED_UNICODE);
+    echo $json;
+}
+
+
+if ($codigoCrud == 4) {
+    $consulta = "SELECT * FROM Provincias";
+    $ejecutar = mysqli_query($db, $consulta);
+    $arreglo = mysqli_fetch_all($ejecutar, MYSQLI_ASSOC);
+    $json = json_encode($arreglo, JSON_UNESCAPED_UNICODE);
+    echo $json;
+}
+
+
+if ($codigoCrud == 5) {
+    $consulta = "SELECT * FROM Cantones WHERE Cantones.Codigo_Provincia = $codigoProvincia";
+    $ejecutar = mysqli_query($db, $consulta);
+    $arreglo = mysqli_fetch_all($ejecutar, MYSQLI_ASSOC);
     $json = json_encode($arreglo, JSON_UNESCAPED_UNICODE);
     echo $json;
 }

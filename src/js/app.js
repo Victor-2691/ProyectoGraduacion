@@ -13,11 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // darkmode2();
   tabs();
 
-
-
-
-
-
+  formulariocliente();
 
   // btnperfil();
 });
@@ -152,37 +148,102 @@ function tabs() {
   })
 }
 
-  /*
-  *   This content is licensed according to the W3C Software License at
-  *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
-  *
-  *   File:  switch-checkbox.js
-  *
-  *   Desc:  Switch widget using input[type=checkbox] that implements ARIA Authoring Practices
-  */
+  function formulariocliente(){
+    const Provincia = document.getElementById("Provincia");
+    const Canton = document.getElementById("Canton");
+    const Distrito = document.getElementById("Distrito");
+        //Cargar el Combo de Provincias
+        var parametros = {
+            "codigoCrud": 4
+        };
+        $.ajax({
+            data: parametros,
+            url: 'funcionesphp/crud_clientes.php',
+            type: 'POST',
+            dataType: 'json',
+            success: function(mensaje) {
 
-  'use strict';
+                mensaje.forEach(item => {
+                    const newOption = new Option(item.Nombre_Provincia, item.Codigo_Provincia);
+                    Provincia.appendChild(newOption);
+                });
+             
 
-  class CheckboxSwitch {
-    constructor(domNode) {
-      this.switchNode = domNode;
-      this.switchNode.addEventListener('focus', () => this.onFocus(event));
-      this.switchNode.addEventListener('blur', () => this.onBlur(event));
-    }
+            },
+            Error: function(jqXHR, textStatus, errorThrown) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: textStatus & errorThrown,
 
-    onFocus(event) {
-      event.currentTarget.parentNode.classList.add('focus');
-    }
+                })
+            }
 
-    onBlur(event) {
-      event.currentTarget.parentNode.classList.remove('focus');
-    }
-  }
+        });
 
-  function animacion() {
-    Array.from(
-      document.querySelectorAll('input[type=checkbox][role^=switch]')
-    ).forEach((element) => new CheckboxSwitch(element));
+        Provincia.addEventListener("change", function() {
+            const codigoprovincia = Provincia.value;
+            Canton.length = 1;
+            console.log(codigoprovincia);
+            var parametros = {
+                "codigoCrud": 5,
+                "codigoProvincia": codigoprovincia
+            };
+            $.ajax({
+                data: parametros,
+                url: 'funcionesphp/crud_clientes.php',
+                type: 'POST',
+                dataType: 'json',
+                success: function(mensaje) {
+                    console.log(mensaje);
+                    mensaje.forEach(item => {
+                        const newOption = new Option(item.Nombre_Canton, item.Codigo_Canton);
+                        Canton.appendChild(newOption);
+                    });
+                
+
+                },
+                Error: function(jqXHR, textStatus, errorThrown) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: textStatus & errorThrown,
+
+                    })
+                }
+            });
+        });
+
+
+        const formulario = document.querySelector('.formulario_nuevocliente');
+        const nombreInput = formulario.querySelector('[name="nombre"]');
+
+        formulario.addEventListener("submit", function(event) {
+            if (!validarNombre(nombreInput.value)) {
+                alert("Por favor, ingresa un nombre válido.");
+                event.preventDefault(); // Evita el envío del formulario
+                return;
+            }
+
+            if (!validarEmail(emailInput.value)) {
+                alert("Por favor, ingresa un correo electrónico válido.");
+                event.preventDefault(); // Evita el envío del formulario
+                return;
+            }
+
+            // Si pasa todas las validaciones, el formulario se enviará
+        });
+
+        function validarNombre(nombre) {
+            // Realiza tus validaciones aquí, devuelve true si es válido
+            return nombre.trim() !== "";
+        }
+
+        function validarEmail(email) {
+            // Realiza tus validaciones aquí, devuelve true si es válido
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+  
   }
 
 
