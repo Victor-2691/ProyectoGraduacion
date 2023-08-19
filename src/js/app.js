@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // darkmode2();
   tabs();
 
-  formulariocliente();
+
 
   // btnperfil();
 });
@@ -148,103 +148,21 @@ function tabs() {
   })
 }
 
-  function formulariocliente(){
-    const Provincia = document.getElementById("Provincia");
-    const Canton = document.getElementById("Canton");
-    const Distrito = document.getElementById("Distrito");
-        //Cargar el Combo de Provincias
-        var parametros = {
-            "codigoCrud": 4
-        };
-        $.ajax({
-            data: parametros,
-            url: 'funcionesphp/crud_clientes.php',
-            type: 'POST',
-            dataType: 'json',
-            success: function(mensaje) {
-
-                mensaje.forEach(item => {
-                    const newOption = new Option(item.Nombre_Provincia, item.Codigo_Provincia);
-                    Provincia.appendChild(newOption);
-                });
-             
-
-            },
-            Error: function(jqXHR, textStatus, errorThrown) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: textStatus & errorThrown,
-
-                })
-            }
-
-        });
-
-        Provincia.addEventListener("change", function() {
-            const codigoprovincia = Provincia.value;
-            Canton.length = 1;
-            console.log(codigoprovincia);
-            var parametros = {
-                "codigoCrud": 5,
-                "codigoProvincia": codigoprovincia
-            };
-            $.ajax({
-                data: parametros,
-                url: 'funcionesphp/crud_clientes.php',
-                type: 'POST',
-                dataType: 'json',
-                success: function(mensaje) {
-                    console.log(mensaje);
-                    mensaje.forEach(item => {
-                        const newOption = new Option(item.Nombre_Canton, item.Codigo_Canton);
-                        Canton.appendChild(newOption);
-                    });
-                
-
-                },
-                Error: function(jqXHR, textStatus, errorThrown) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: textStatus & errorThrown,
-
-                    })
-                }
-            });
-        });
-
-
-        const formulario = document.querySelector('.formulario_nuevocliente');
-        const nombreInput = formulario.querySelector('[name="nombre"]');
-
-        formulario.addEventListener("submit", function(event) {
-            if (!validarNombre(nombreInput.value)) {
-                alert("Por favor, ingresa un nombre válido.");
-                event.preventDefault(); // Evita el envío del formulario
-                return;
-            }
-
-            if (!validarEmail(emailInput.value)) {
-                alert("Por favor, ingresa un correo electrónico válido.");
-                event.preventDefault(); // Evita el envío del formulario
-                return;
-            }
-
-            // Si pasa todas las validaciones, el formulario se enviará
-        });
-
-        function validarNombre(nombre) {
-            // Realiza tus validaciones aquí, devuelve true si es válido
-            return nombre.trim() !== "";
-        }
-
-        function validarEmail(email) {
-            // Realiza tus validaciones aquí, devuelve true si es válido
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        }
-  
-  }
+function navegacion(){
+  const opciones = document.querySelectorAll(".navegacion a");
+ console.log(opciones);
+  opciones.forEach(opcion => {
+    opcion.addEventListener("click", function(event) {
+      const target = this.getAttribute("data-target");
+      const targetElement = document.getElementById(target);
+      
+      if (targetElement) {
+        opciones.forEach(op => op.classList.remove("activa"));
+        this.classList.add("activa");
+      }
+    });
+  });
+}
 
 
 // function btnperfil() {

@@ -33,6 +33,7 @@ if (!isset($_SESSION['loaded'])) {
     <title>MR Automotriz</title>
     <link rel="stylesheet" href="build/css/app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <!-- <script src="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js
 "></script> -->
@@ -41,6 +42,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css
 " rel="stylesheet"> -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
 
     
 </head>
@@ -62,9 +65,11 @@ So es true mostramos el header inicio que tiene la imagen -->
               
                     <nav class="navegacion">
                        
-                       <a href="principalempleados.php">Inicio</a>
-                        <a href="inicio_sesion.php">Hoja de trabajo</a>
-                        <a href="clientes.php">Clientes</a>
+                       <a   href="principalempleados.php" class="opcion_menu" data-target="inicio" >Inicio</a>
+                       <a  href="clientes.php" class="opcion_menu" data-target="Clientes">Clientes</a>
+                       <a  href="vehiculos.php" class="opcion_menu" data-target="Clientes">Vehiculos</a>
+
+                        <a  href="inicio_sesion.php" class="opcion_menu" data-target="hojatrabajo">Mis hojas de trabajo</a>
                         <p id="nombre_usuario"> Usuario/ <?php echo $NombreUsuario ?> </p>
                         <a href="salir.php">
                             <img class="iconos35f" src="build/img/cerrar-sesion.png" />

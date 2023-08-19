@@ -53,6 +53,11 @@
     }
 }
 
+.navegacion a.activa {
+    background-color: blue;
+    color: white;
+  }
+
 .navegacion {
     // Que no se vea
     visibility: hidden;

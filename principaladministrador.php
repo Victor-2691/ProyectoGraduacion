@@ -45,7 +45,7 @@ incluirTempleate('header_administrativo');
                 <div class="card bg-c-blue order-card">
                     <div class="card-block">
                         <h6 class="m-b-20">Total Ingresos</h6>
-                        <h2 class="text-right"><i class="fa fa-rocket f-left"></i>
+                        <h2 class="text-right">
                             <span id="suspiros">0</span>
                         </h2>
 
@@ -57,9 +57,9 @@ incluirTempleate('header_administrativo');
             <div class="col-md-4 col-xl-3">
                 <div class="card bg-c-green order-card">
                     <div class="card-block">
-                        <h6 class="m-b-20">Coincidencias</h6>
+                        <h6 class="m-b-20">Clientes Nuevos</h6>
 
-                        <h2 class="text-right"><i class="fa fa-rocket f-left"></i>
+                        <h2 class="text-right">
                             <span id="coincidencias">0</span>
                         </h2>
 
@@ -71,9 +71,9 @@ incluirTempleate('header_administrativo');
             <div class="col-md-4 col-xl-3">
                 <div class="card bg-c-pink order-card">
                     <div class="card-block">
-                        <h6 class="m-b-20">Usuarios</h6>
+                        <h6 class="m-b-20">Servicios</h6>
 
-                        <h2 class="text-right"><i class="fa fa-credit-card f-left"></i>
+                        <h2 class="text-right">
                             <span id="masculinos">0</span>
                         </h2>
 

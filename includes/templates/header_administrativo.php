@@ -32,6 +32,7 @@ if (!$autenticado || $Usario <> 1) {
     <title>Administrativo</title>
     <link rel="stylesheet" href="build/css/app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
  
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
@@ -54,6 +55,9 @@ So es true mostramos el header inicio que tiene la imagen -->
                     <nav class="navegacion">
                         <a href="principaladministrador.php">Inicio</a>
                         <a href="aprobarUsuarios.php">Aprobar Usuarios</a>
+                        <a href="#">Servicios</a>
+                        <a href="#">Clientes</a>
+                        <a href="#">Hojas de trabajo</a>
                         <p id="nombre_usuario"> Admin/ <?php echo $NombreUsuario ?> </p>
                         <a href="salir.php">
                             <img class="iconos35f" src="build/img/cerrar-sesion.png" />

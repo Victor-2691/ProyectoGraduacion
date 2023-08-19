@@ -14,20 +14,20 @@ $db = conectarBD();
         <div class="buscar_clientes">
             <form id="miFormulario" form class="formulario2" enctype="multipart/form-data">
                 <fieldset class="fielsombra">
-                    <legend>Clientes</legend>
+                    <legend>Buscar Vehiculos</legend>
                     <label id="lableBuscar" for="nombre">Buscar:</label>
                     <input maxlength="30" require name="Buscar" type="text" placeholder="Ingrese el parametro" id="Buscar">
                     <div class="radio-container">
 
-                        <label>Nombre
+                        <label>Placa
                             <input type="radio" name="busqueda" value="1" checked />
                         </label>
 
-                        <label>Celular
+                        <label>Marca
                             <input type="radio" name="busqueda" value="2" />
                         </label>
 
-                        <label>Cédula
+                        <label>Id Cliente
                             <input type="radio" name="busqueda" value="3" />
                         </label>
                     </div>
@@ -37,9 +37,7 @@ $db = conectarBD();
                     <button id="btn_limpiar" class="boton-negro">
                         Limpiar
                     </button>
-                    <button id="btn_nuevocliente" class="boton-negro">
-                        Nuevo
-                    </button>
+
                 </fieldset>
             </form>
         </div>
@@ -48,13 +46,14 @@ $db = conectarBD();
             <table class="table_aprobar_usuarios" id="miTabla">
                 <thead>
                     <tr>
+                        <th>Placa</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Año</th>
+                        <th>Id Cliente</th>
                         <th>Nombre</th>
-                        <th>Primer Apellido</th>
-                        <th>Segundo Apellido</th>
-                        <th>Cédula</th>
-                        <th>Teléfono</th>
-                        <th>Provincia</th>
-                        <th>Cantón</th>
+                        <th>1 Apellido</th>
+                        <th>2 Apellido</th>
                         <th colspan="2">Acciones</th>
 
                     </tr>
@@ -75,6 +74,9 @@ $db = conectarBD();
 </main>
 
 
+
+
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const formulario = document.getElementById("miFormulario");
@@ -82,12 +84,7 @@ $db = conectarBD();
         formulario.addEventListener("submit", function(event) {
             event.preventDefault(); // Evita el comportamiento por defecto del formulario
         });
-        let btn_nuevo = document.querySelector('#btn_nuevocliente');
-        //Opcion 1 con Function Anonima
-        // Opcion 2 con flecha sin funcion anonima
-        btn_nuevo.addEventListener('click', () => {
-            window.location.href = 'nuevocliente.php';
-        });
+
 
         //  EVENTO CLICK BUSCAR INICIO
         let btn_buscar = document.querySelector('#btn_buscar');
@@ -143,7 +140,7 @@ $db = conectarBD();
         };
         $.ajax({
             data: parametros,
-            url: 'funcionesphp/crud_clientes.php',
+            url: 'funcionesphp/crud_vehiculos.php',
             type: 'POST',
             dataType: 'json',
             success: function(mensaje) {
@@ -154,10 +151,13 @@ $db = conectarBD();
                 $('#miTabla').on('click', '.accion-actualizar', function() {
                     // Manejar el clic del botón "Actualizar"
                     var fila = $(this).closest("tr");
-                    var idfila = fila.find("td:eq(3)").text();
-                    var nombrefila = fila.find("td:eq(0)").text();
-                    var apellido1fila = fila.find("td:eq(1)").text();
-                    var apellido2fila = fila.find("td:eq(2)").text();
+                    var placafila = fila.find("td:eq(0)").text();
+                    var marcafila = fila.find("td:eq(1)").text();
+                    var modelofila = fila.find("td:eq(2)").text();
+                    var idclientefila = fila.find("td:eq(4)").text();
+                    var nombrefila = fila.find("td:eq(5)").text();
+                    var apellido1fila = fila.find("td:eq(6)").text();
+                    var apellido2fila = fila.find("td:eq(7)").text();
                     var id = "";
                     var nombre = "";
                     var apellido1 = "";
@@ -165,7 +165,7 @@ $db = conectarBD();
                     var nuevaURL = "";
                     Swal.fire({
                         title: "Confirmar",
-                        text: `¿Estas seguro que desea agregar actualizar al cliente ${nombrefila}${apellido1fila} ${apellido2}  ?`,
+                        text: `¿Estas seguro que deseas modificar el vehiculo ${placafila}  ?`,
                         icon: 'question',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
@@ -174,17 +174,17 @@ $db = conectarBD();
                     }).then((result) => {
                         if (result.isConfirmed) {
                             Swal.fire(
-                                id = idfila,
-                                nombre = nombrefila,
-                                apellido1 = apellido1fila,
-                                apellido2 = apellido2fila,
+                                // id = idfila,
+                                // nombre = nombrefila,
+                                // apellido1 = apellido1fila,
+                                // apellido2 = apellido2fila,
 
-                                // Construye la URL con las variables
-                                nuevaURL = "nueva_pagina.html" + "?id=" + encodeURIComponent(id) + "&nombre=" + encodeURIComponent(nombre) + "&apellido1=" + encodeURIComponent(apellido1) +
-                                "&apellido2=" + encodeURIComponent(apellido2),
+                                // // Construye la URL con las variables
+                                // nuevaURL = "nueva_pagina.html" + "?id=" + encodeURIComponent(id) + "&nombre=" + encodeURIComponent(nombre) + "&apellido1=" + encodeURIComponent(apellido1) +
+                                // "&apellido2=" + encodeURIComponent(apellido2),
 
-                                // Redirige a la nueva URL
-                                window.location.href = nuevaURL,
+                                // // Redirige a la nueva URL
+                                // window.location.href = nuevaURL,
 
                             )
                         }
@@ -196,19 +196,25 @@ $db = conectarBD();
                     // Manejar el clic del botón "Vehiculos"
                     // Manejar el clic del botón "Actualizar"
                     var fila = $(this).closest("tr");
-                    var idfila = fila.find("td:eq(3)").text();
-                    var nombrefila = fila.find("td:eq(0)").text();
-                    var apellido1fila = fila.find("td:eq(1)").text();
-                    var apellido2fila = fila.find("td:eq(2)").text();
+                    var placafila = fila.find("td:eq(0)").text();
+                    var marcafila = fila.find("td:eq(1)").text();
+                    var modelofila = fila.find("td:eq(2)").text();
+                    var idclientefila = fila.find("td:eq(4)").text();
+                    var nombrefila = fila.find("td:eq(5)").text();
+                    var apellido1fila = fila.find("td:eq(6)").text();
+                    var apellido2fila = fila.find("td:eq(7)").text();
                     var id = "";
                     var nombre = "";
                     var apellido1 = "";
                     var apellido2 = "";
                     var nuevaURL = "";
+                    var placa = "";
+                    var modelo = ""
+                    var marca = ""
 
                     Swal.fire({
                         title: "Confirmar",
-                        text: `¿Estas seguro que desea agregar un vehiculo al cliente ${nombrefila} ${apellido1fila} ${apellido2}  ?`,
+                        text: `¿Estas seguro que desea agregar una hoja de trabajo al vehiculo ${placafila} ?`,
                         icon: 'question',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
@@ -216,17 +222,19 @@ $db = conectarBD();
                         confirmButtonText: 'Confirmar !'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                                id = idfila,
-                                nombre = nombrefila,
-                                apellido1 = apellido1fila,
-                                apellido2 = apellido2fila,
-                                // Construye la URL con las variables
-                              // Construye la URL con las variables
-                              nuevaURL = "agregarvehiculo.php" + "?id=" + encodeURIComponent(id) + "&nombre=" + encodeURIComponent(nombre) + "&apellido1=" + encodeURIComponent(apellido1) +
-                                "&apellido2=" + encodeURIComponent(apellido2),
+                            id = idclientefila,
+                                nombre = nombrefila;
+                            apellido1 = apellido1fila;
+                            apellido2 = apellido2fila;
+                            placa = placafila;
+                            modelo = modelofila;
+                            marca = marcafila;
+                            // Construye la URL con las variables
+                            // Construye la URL con las variables
+                            nuevaURL = "agregarhojatrabajo.php" + "?id=" + encodeURIComponent(id) + "&nombre=" + encodeURIComponent(nombre) + "&apellido1=" + encodeURIComponent(apellido1) + "&apellido2=" + encodeURIComponent(apellido2) + "&placa=" + encodeURIComponent(placa) + "&modelo=" + encodeURIComponent(modelo) + "&marca=" + encodeURIComponent(marca)
 
-                                // Redirige a la nueva URL
-                                window.location.href = nuevaURL
+                            // Redirige a la nueva URL
+                            window.location.href = nuevaURL
 
                         }
                     })
@@ -258,15 +266,16 @@ $db = conectarBD();
             console.log(data[i].Id);
             body +=
                 `<tr>
-    <td>${data[i].nombre}</td>
+    <td>${data[i].placa}</td>
+    <td>${data[i].marca}</td>
+    <td>${data[i].modelo}</td>
+    <td>${data[i].anno}</td>
+    <td>${data[i].id_cliente}</td>
+    <td>${data[i].nombrecliente}</td>
     <td>${data[i].Primer_Apeliido}</td>
     <td>${data[i].segundo_apellid}</td>
-    <td>${data[i].identificacion}</td>
-    <td>${data[i].celular}</td>
-    <td>${data[i].Nombre_Provincia}</td>
-    <td>${data[i].Nombre_Canton}</td>
     <td>   <button class="boton-principal accion-actualizar">Actualizar</button> </td>
-    <td>   <button class="boton-principal accion-vehiculos">+Vehiculo</button> </td>
+    <td>   <button class="boton-principal accion-vehiculos">+Hoja Trabajo</button> </td>
  
     </tr>`
         }
@@ -285,7 +294,7 @@ $db = conectarBD();
         };
         $.ajax({
             data: parametros,
-            url: 'funcionesphp/crud_clientes.php',
+            url: 'funcionesphp/crud_vehiculos.php',
             type: 'POST',
             dataType: 'json',
             success: function(mensaje) {
@@ -339,7 +348,6 @@ $db = conectarBD();
         return nombre.trim() !== "";
     }
 </script>
-
 
 <?php
 incluirTempleate('footer');

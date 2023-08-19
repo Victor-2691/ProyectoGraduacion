@@ -1,6 +1,8 @@
 .boton-negro {
     @include boton($negro, inline-block);
     text-transform: uppercase;
+    padding: 12px 10px;
+    margin: 0;
 
     &:hover {
         color: $principal;

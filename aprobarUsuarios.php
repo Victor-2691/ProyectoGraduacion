@@ -96,6 +96,8 @@ $ejecutar = mysqli_query($db, $consulta) ?? null;
 
     // Agregar un evento de clic a cada botón con clase "accion" dentro de la tabla
     const botones = tabla.getElementsByClassName('accion');
+    console.log(botones);
+    console.log(botones.length);
     for (let i = 0; i < botones.length; i++) {
         botones[i].addEventListener('click', function(event) {
             // Obtener la celda padre (td) que contiene el botón
