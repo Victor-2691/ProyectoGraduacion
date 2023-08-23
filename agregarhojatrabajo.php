@@ -9,6 +9,7 @@ $idusuario =  $_SESSION['id']
 ?>
 <main>
     <div class="contenido_principal_vehiculo">
+        <p hidden id="idusuario"> <?php echo $idusuario ?> </p>
         <form class="formulario3">
             <!--E; fieldset es para configurar el encabezado del formulario-->
             <fieldset>
@@ -102,15 +103,7 @@ $idusuario =  $_SESSION['id']
                     <div class="campo">
                         <label>Servicios Aplicados:</label>
                         <select multiple name="Servicios" id="Servicios">
-                            <option value="1">Alineado</option>
-                            <option value="2">Balanceo</option>
-                            <option value="3">Gases</option>
-                            <option value="4">Dekra</option>
-                            <option value="5">Cambio de aceite</option>
-                            <option value="6">Sistema eléctrico</option>
-                            <option value="7">Transmisión</option>
-                            <option value="8">embrague</option>
-                            <option value="9">Diagnóstico de problemas</option>
+
                         </select>
                     </div>
 
@@ -122,10 +115,10 @@ $idusuario =  $_SESSION['id']
 
                     <div class="campo double_firma">
                         <label for="Firma">Firma</label>
-                        <canvas width="400" height="200"   id="signatureCanvas"></canvas>
+                        <canvas width="400" height="200" id="signatureCanvas"></canvas>
                     </div>
 
-               
+
 
 
 
@@ -160,6 +153,9 @@ $idusuario =  $_SESSION['id']
             var urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
         }
+
+
+
 
         // Obtén los valores de los parámetros de la URL
         var parametro1 = getURLParameter("id");
@@ -196,14 +192,123 @@ $idusuario =  $_SESSION['id']
         console.log(fecharegistro);
         console.log(fechacompleta);
         fecharegistro.value = fechacompleta;
+        let servicios = document.querySelector('#Servicios');
+        console.log(servicios);
+        // Cargar combo de servicios 
+        //Cargar el Combo de Provincias
+        var parametros = {
+            "codigoCrud": 1
+        };
+        $.ajax({
+            data: parametros,
+            url: 'funcionesphp/crud_hojatrabajo.php',
+            type: 'POST',
+            dataType: 'json',
+            success: function(mensaje) {
+
+                mensaje.forEach(item => {
+                    const newOption = new Option(item.Nombre, item.Id_servicio);
+                    servicios.appendChild(newOption);
+                });
+
+                new MultiSelectTag('Servicios', {
+                    rounded: true, // default true
+                    shadow: true, // default false
+                    placeholder: 'Search', // default Search...
+                    onChange: function(values) {
+                        console.log(values)
+                    }
+                })
+
+
+            },
+            Error: function(jqXHR, textStatus, errorThrown) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: textStatus & errorThrown,
+
+                })
+            }
+
+        });
+
+        var canvas = document.getElementById('signatureCanvas');
+        var signaturePad = new SignaturePad(canvas);
+        let firma = document.querySelector('#signatureCanvas');
+        let comentarios = document.querySelector('#comentarios');
+        let Gasolina = document.querySelector('#Gasolina');
+        let kiloemetraje = document.querySelector('#kiloemetraje');
+        let usuario = document.querySelector('#idusuario');
+        console.log(canvas);
+
+
 
         btnagregar.addEventListener('click', () => {
+
+
+            if (Gasolina.selectedIndex == 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Debe seleccionar la cantidad de combustible',
+                })
+                // event.preventDefault(); // Evita el envío del formulario
+                return;
+            }
+
+            if (!validarNumero(kiloemetraje.value)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Debe ingresar el kilometraje',
+                })
+                // event.preventDefault(); // Evita el envío del formulario
+                return;
+            }
+
+            if (servicios.selectedIndex == -1) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Debe seleccionar minimo un servicio',
+                })
+                // event.preventDefault(); // Evita el envío del formulario
+                return;
+            }
+
+            if (!validarCamposVacios(comentarios.value)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Debe ingresar algun comentario relevante',
+                })
+                // event.preventDefault(); // Evita el envío del formulario
+                return;
+            }
+
+            let resultado = signaturePad.isEmpty();
+            console.log(resultado);
+
+            if (resultado) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'El cliente debe firmar la boleta de ingreso',
+                })
+                return;
+            }
+
             Swal.fire(
                 'Good job!',
-                'Vehiculo se agrego con exito!',
+                'Hoja de trabajo se agrego con exito!',
                 'Aceptar'
             )
-            window.location.href = 'vehiculos.php'
+            // window.location.href = 'vehiculos.php'
+
+
+
+
 
         })
 
@@ -229,18 +334,8 @@ $idusuario =  $_SESSION['id']
         }
 
 
-        new MultiSelectTag('Servicios', {
-            rounded: true, // default true
-            shadow: true, // default false
-            placeholder: 'Search', // default Search...
-            onChange: function(values) {
-                console.log(values)
-            }
-        })
 
 
-        var canvas = document.getElementById('signatureCanvas');
-        var signaturePad = new SignaturePad(canvas);
 
         var clearButton = document.getElementById('clearButton');
         clearButton.addEventListener('click', function() {
@@ -248,6 +343,15 @@ $idusuario =  $_SESSION['id']
         });
 
     });
+
+    function validarCamposVacios(nombre) {
+        // Realiza tus validaciones aquí, devuelve true si es válido
+        return nombre.trim() !== "";
+    }
+
+    function validarNumero(valor) {
+        return valor !== "" && /^\d+$/.test(valor);
+    }
 </script>
 
 

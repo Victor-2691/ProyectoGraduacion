@@ -69,7 +69,7 @@ So es true mostramos el header inicio que tiene la imagen -->
                        <a  href="clientes.php" class="opcion_menu" data-target="Clientes">Clientes</a>
                        <a  href="vehiculos.php" class="opcion_menu" data-target="Clientes">Vehiculos</a>
 
-                        <a  href="inicio_sesion.php" class="opcion_menu" data-target="hojatrabajo">Mis hojas de trabajo</a>
+                        <a  href="verhojastrabajo.php" class="opcion_menu" data-target="hojatrabajo">Mis hojas de trabajo</a>
                         <p id="nombre_usuario"> Usuario/ <?php echo $NombreUsuario ?> </p>
                         <a href="salir.php">
                             <img class="iconos35f" src="build/img/cerrar-sesion.png" />
