@@ -304,6 +304,7 @@ $idusuario =  $_SESSION['id']
                 'Hoja de trabajo se agrego con exito!',
                 'Aceptar'
             )
+            window.location.href = 'vehiculos.php'
             // window.location.href = 'vehiculos.php'
 
 
